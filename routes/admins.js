@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../models/user');
-const {catchAsync} = require("../utils/catchAsync");
 const {isLoggedIn,validateSpeaker} = require("../utils/middleware")
 const {storage, cloudinary} = require("../cloudinary");
 const multer  = require('multer');
