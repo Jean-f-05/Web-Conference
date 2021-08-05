@@ -7,35 +7,37 @@ const {storage, cloudinary} = require("../cloudinary");
 const multer  = require('multer');
 const upload = multer({ storage});
 const admin = require("../controllers/admins")
+const catchAsync = require("../utils/catchAsync");
+
 
 
 //ATTENDEE ROUTES
 router.route("/")
-  .get(isLoggedIn, admin.renderAttendees)
-  .delete(isLoggedIn, admin.deleteAttendee)
-  .post(admin.authentication)
+  .get(isLoggedIn, catchAsync(admin.renderAttendees))
+  .delete(isLoggedIn, catchAsync(admin.deleteAttendee))
+  .post(catchAsync(admin.authentication))
 
 //LOGOUT ROUTE
 router.get("/logout", admin.logout)
 
 //SPEAKERS ROUTES
 router.route("/speakers")
-  .get(isLoggedIn, admin.renderSpeakers)
-  .post(upload.single('photo'), validateSpeaker, isLoggedIn, admin.addSpeaker)
-  .delete(isLoggedIn, admin.deleteSpeaker)
+  .get(isLoggedIn, catchAsync(admin.renderSpeakers))
+  .post(upload.single('photo'), validateSpeaker, isLoggedIn, catchAsync(admin.addSpeaker))
+  .delete(isLoggedIn, catchAsync(admin.deleteSpeaker))
   
 
   router.route("/speakers/:id")
-    .get(isLoggedIn,admin.renderUpdateSpeaker)
-    .put(upload.single('photo'),(isLoggedIn,admin.updateSpeaker));
+    .get(isLoggedIn,catchAsync(admin.renderUpdateSpeaker))
+    .put(upload.single('photo'),(isLoggedIn,catchAsync(admin.updateSpeaker)));
 
 
 
 //SPONSORS ROUTES
 router.route("/sponsors")
-  .get(isLoggedIn, admin.renderSponsor)
-  .post(upload.single('image'),isLoggedIn, admin.addSponsor)
-  .delete(isLoggedIn, admin.deleteSponsor); 
+  .get(isLoggedIn, catchAsync(admin.renderSponsor))
+  .post(upload.single('image'),isLoggedIn, catchAsync(admin.addSponsor))
+  .delete(isLoggedIn, catchAsync(admin.deleteSponsor)); 
 
 
 module.exports = router;
