@@ -1,0 +1,79 @@
+<% layout("/layouts/boilerplateAdmin") -%>
+
+<div id="main" class="container-fluid">
+  <div class="row">
+
+    <div id="sidebar" class="text-white bg-dark col-2 pt-3">
+      <ul class="nav nav-pills flex-column mb-auto">
+        <li class="nav-item">
+          <a href="/admins" class="nav-link active text-white " aria-current="page">
+            <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"/></svg>
+            Attendees
+          </a>
+        </li>
+        <li>
+          <a href="/admins/speakers" class="nav-link text-white">
+            <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"/></svg>
+            Speakers
+          </a>
+        </li>
+        <li>
+          <a href="/admins/sponsors" class="nav-link text-white">
+            <svg class="bi me-2" width="16" height="16"><use xlink:href="#table"/></svg>
+            Sponsors
+          </a>
+      </ul>
+    </div>
+
+
+
+    <div id="content" class="container col-10">
+      <div class="container my-3">
+        <h1>Attendees</h1>
+        <h4 class="text-muted">Manage Attendees</h4>
+        
+        <div class="container col-8 float-start ps-0">
+          <hr>
+          <table class="table table-info border border-primary">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+          <tbody>
+                <%for (let i = 0; i < attendees.length; i++){%>
+                  <tr>
+                    <th scope="row"><%= i+1 %></th>
+                      <td><%=attendees[i].name%></td>
+                      <td><%=attendees[i].email%></td>
+                      <td>
+                        <form action="/admins?_method=DELETE" method="POST">
+                          <button type="submit"class= "btn" name="id" value="<%=attendees[i]._id%>"><svg class="bi me-2" width="16" height="16"><use xlink:href="#trash"/></svg></button>
+                        </form>
+                      </td>
+                  </tr>
+                <% } %>
+            </tbody>
+            </table>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- <script>
+/* global bootstrap: false */
+(function () {
+  'use strict'
+  const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+  tooltipTriggerList.forEach(function (tooltipTriggerEl) {
+    new bootstrap.Tooltip(tooltipTriggerEl)
+  })
+})()
+</script> -->
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>

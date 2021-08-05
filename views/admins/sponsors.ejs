@@ -1,0 +1,96 @@
+<% layout("/layouts/boilerplateAdmin") -%>
+
+<div id="main" class="container-fluid">
+  <div class="row">
+
+    <div id="sidebar" class="text-white bg-dark col-2 pt-3">
+      <ul class="nav nav-pills flex-column mb-auto">
+        <li class="nav-item">
+          <a href="/admins" class="nav-link  text-white " aria-current="page">
+            <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"/></svg>
+            Attendees
+          </a>
+        </li>
+        <li>
+          <a href="/admins/speakers" class="nav-link text-white">
+            <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"/></svg>
+            Speakers
+          </a>
+        </li>
+        <li>
+          <a href="/admins/sponsors" class="nav-link active text-white">
+            <svg class="bi me-2" width="16" height="16"><use xlink:href="#table"/></svg>
+            Sponsors
+          </a>
+      </ul>
+    </div>
+
+
+
+    <div id="content" class="container col-10">
+      <div class="container my-3">
+          <form action="/admins/sponsors" method="POST" class="validated-form" novalidate enctype="multipart/form-data">
+              <h1>Sponsors</h1>
+              <h4 class="text-muted">Add sponsor</h4>
+              <hr>
+            <div class="row">
+              <div class="mb-3 col-6">
+                
+                <label for="exampleFormControlInput1" class="form-label">Sponsor's ID</label>
+                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Sponsor's ID"  name="sponsorID" required>
+              </div>
+              <div class="mb-3 col-6">
+                <label for="formFile" class="form-label">Sponsor's Image</label>
+                <input class="form-control" type="file" id="formFile" name="image" required>
+              </div>
+            </div>
+              <div class="row">
+              <div class="container col-12 text-left">
+                <button type="submit" class="btn btn-primary">Add Sponsor</button>
+                <button type="reset" class="btn btn-dark">Reset</button>
+              </div>
+              </div>
+          </form>
+  
+  
+  
+  
+          <div class="container-fluid mt-5 p-0 col-6 float-start">
+            <h4 class="text-muted ">Manage sponsors</h4>
+            <hr>
+         
+          <div class="container-fluid p-0">
+            
+              <table class="table table-info table-sm border border-primary">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <%for(let i = 0; i < sponsors.length; i++){%>
+                    <tr>
+                      <th scope="row"><%= i+1 %></th>
+                      <td><%=sponsors[i].sponsorID%></td>
+                      <td>
+                      
+                        <form action="/admins/sponsors?_method=DELETE"" method="POST">
+                          <button type="submit"class= "btn" name="sponsorFileName" value="<%=sponsors[i].image.filename%>"><svg class="bi me-2" width="16" height="16"><use xlink:href="#trash"/></svg></button>
+                        </form>
+                      </td>
+                  <% } %>
+                    </tr>
+                </tbody>
+              </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+<script src="/javascript/formvalidation.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>

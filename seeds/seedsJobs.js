@@ -1,0 +1,17 @@
+module.exports.jobs = [
+    "Front-End",
+    "Back-End",
+    "Marketing Expert",
+    "Systems Architect",
+    "Developer",
+    "Designer",
+    "EOS CEO",
+    "HR Specialist",
+    "Operations Leader",
+    "Designer",
+    "Systems Designer",
+    "Data Analyst", 
+    "LAMP CTO",
+    "Customer Support Expert",
+    "Service Delivery Manager",
+]

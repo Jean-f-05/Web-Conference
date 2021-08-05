@@ -1,0 +1,134 @@
+<% layout("/layouts/boilerplateAdmin") -%>
+
+<div id="main" class="container-fluid">
+  <div class="row">
+
+    <div id="sidebar" class="text-white bg-dark col-2 pt-3">
+      <ul class="nav nav-pills flex-column mb-auto">
+        <li class="nav-item">
+          <a href="/admins" class="nav-link  text-white " aria-current="page">
+            <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"/></svg>
+            Attendees
+          </a>
+        </li>
+        <li>
+          <a href="/admins/speakers" class="nav-link active text-white">
+            <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"/></svg>
+            Speakers
+          </a>
+        </li>
+        <li>
+          <a href="/admins/sponsors" class="nav-link text-white">
+            <svg class="bi me-2" width="16" height="16"><use xlink:href="#table"/></svg>
+            Sponsors
+          </a>
+      </ul>
+    </div>
+
+
+
+ 
+
+        <div id="SpeakersHeader" class="col-10 my-3">
+        <form action="/admins/speakers" method="POST" class="validated-form" novalidate enctype="multipart/form-data">
+          <div class="container text-left">
+            <h1>Speakers</h1>
+            <h4 class="text-muted">Add speakers</h4>
+            <hr>
+          </div>
+          <div class="container">
+            <div class="row">
+              <div class="mb-3 col-6">
+                <label for="exampleFormControlInput1" class="form-label">Name</label>
+                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Speaker's name"  name="name" required>
+              </div>
+              <div class="mb-3 col-6">
+                <label for="exampleFormControlInput1" class="form-label">Job</label>
+                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Speaker's Job" name="job" required>
+              </div>
+            </div>
+            <div class="row">
+              <div class="mb-3 col-4">
+                <label for="exampleFormControlInput1" class="form-label">Twitter</label>
+                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Twitter" name="socialNetworks[twitter]">
+              </div>
+              <div class="mb-3 col-4">
+                <label for="exampleFormControlInput1" class="form-label">Facebook</label>
+                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Facebook" name="socialNetworks[facebook]">
+              </div>
+              <div class="mb-3 col-4">
+                <label for="exampleFormControlInput1" class="form-label">Linkedin</label>
+                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Linkedin" name="socialNetworks[linkedin]">
+              </div>
+            </div>
+            <div class="mb-3 col-6">
+              <label for="formFile" class="form-label">Photo</label>
+              <input class="form-control" type="file" id="formFile" name="photo" required>
+            </div>
+            <div class="mb-3 col-6">
+              <label for="exampleFormControlTextarea1" class="form-label">Description</label>
+              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Speaker's Description" name="details" required></textarea>
+            </div>
+
+
+            <div class="row">
+            <div class="container col-12 text-left">
+              <button type="submit" class="btn btn-primary">Add Speaker</button>
+              <button type="reset" class="btn btn-dark">Reset</button>
+            </div>
+            </div>
+          </div>
+        </form>
+
+
+
+
+        <div class="container text-left mt-5">
+          <h4 class="text-muted ">Manage speakers</h4>
+          <hr>
+        </div>
+        <div class="container">
+          <div class="row">
+            <table class="table table-info border border-primary">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Job</th>
+                  <th scope="col">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+          <%for(let i = 0; i < speakers.length; i++){%>
+            <tr>
+              <th scope="row"><%= i+1 %></th>
+              <td><%=speakers[i].name%></td>
+              <td><%=speakers[i].job%></td>  
+              <td>
+                <div class="container px-0">
+                  <div class="row">  
+                    <div class="col-1 px-0">
+                      <a href="/admins/speakers/<%=speakers[i]._id%>" class="btn"><svg class="bi me-2" width="16" height="16"><use xlink:href="#edit"/></svg></a>
+                    </div> 
+                    <div class="col-11">
+                      <form action="/admins/speakers?_method=DELETE" method="POST">
+                        <button type="submit"class= "btn" name="speakerFileName" value="<%=speakers[i].photo.filename%>"><svg class="bi me-2" width="16" height="16"><use xlink:href="#trash"/></svg></button>
+                      </form>
+                    </div> 
+                  </div>
+                </div>
+                
+              </td>
+          <%}%>
+            </tr>
+              </tbody>
+              </table>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+<script src="/javascript/formvalidation.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
