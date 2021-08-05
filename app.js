@@ -109,7 +109,8 @@ app.use((err,req,res,next)=>{
   if(!err.message) err.message = "Ups, something went wrong!"
   res.status(status).render("error", {err})
 })
+const port = process.env.PORT || 3000;
 
-app.listen(3000,(req,res)=>{
-    console.log("Listening on port 3000!")
+app.listen(port,(req,res)=>{
+    console.log(`Hosted on port ${port}`)
 })
