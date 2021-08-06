@@ -8,6 +8,11 @@
     background-size: cover;
 }
 
+body{
+        overflow-x: hidden;
+    }
+
+
 .intro-text{
     padding-top: 150px;
     padding-bottom: 100px;
