@@ -8,10 +8,6 @@
     background-size: cover;
 }
 
-.modal{
-        width: 60%; /* respsonsive width */
-        margin-left:0; /* width/2) */ 
-}
 .intro-text{
     padding-top: 150px;
     padding-bottom: 100px;
@@ -26,7 +22,7 @@ font-family: "Droid Serif", "Helvetica Neue", Helvetica, sans-serif;
 }
 
 .intro-heading{
-font-size: 50px;
+font-size: 30px;
 font-weight: 700;
 line-height: 50px;
 margin-bottom: 25px;
