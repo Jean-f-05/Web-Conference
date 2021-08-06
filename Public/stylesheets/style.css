@@ -8,8 +8,8 @@
     background-size: cover;
 }
 
-body{
-        overflow-x: hidden;
+main{
+        width: 100%;
     }
 
 
