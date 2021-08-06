@@ -100,6 +100,9 @@ app.use("/webconference",atendeesRoutes)
 app.use("/admins", adminsRoutes)
 app.use("/authentication", authenticationRoutes)
 
+app.get("/",(req,res)=>{
+  res.redirect("/webconference")
+})
 
 app.all("*", (req,res,next)=>{
   next(new AppError("Page not found!",404))
