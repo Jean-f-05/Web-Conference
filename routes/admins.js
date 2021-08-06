@@ -14,10 +14,6 @@ const catchAsync = require("../utils/catchAsync");
 router.route("/")
   .get(isLoggedIn, catchAsync(admin.renderAttendees))
   .delete(isLoggedIn, catchAsync(admin.deleteAttendee))
-  .post(catchAsync(admin.authentication))
-
-//LOGOUT ROUTE
-router.get("/logout", admin.logout)
 
 //SPEAKERS ROUTES
 router.route("/speakers")

@@ -12,6 +12,7 @@ const ejs = require('ejs');
 const AppError = require("./utils/appError")
 const atendeesRoutes = require("./routes/webconference.js")
 const adminsRoutes = require("./routes/admins")
+const authenticationRoutes = require("./routes/authentication")
 const session = require('express-session')
 const flash = require('connect-flash');
 const User = require('./models/user');
@@ -97,6 +98,7 @@ app.use((req,res,next)=>{
 //ROUTES 
 app.use("/webconference",atendeesRoutes)
 app.use("/admins", adminsRoutes)
+app.use("/authentication", authenticationRoutes)
 
 
 app.all("*", (req,res,next)=>{

@@ -5,29 +5,13 @@ const Sponsor = require("../models/sponsors");
 const {storage, cloudinary} = require("../cloudinary");
 
 
-module.exports.authentication =
-    passport.authenticate('local', { 
-        successRedirect: '/admins',
-        failureRedirect: '/webconference',
-        failureFlash: true
-  });
-
-
-module.exports.renderAttendees = 
-    async(req,res) => {
+module.exports.renderAttendees = async(req,res) => {
     const attendees = await Attendee.find({});
     res.render("./admins/admins",{attendees})
     }; 
 
-module.exports.logout = 
-    (req,res)=>{
-    req.logout();
-    req.flash("success", "Logged Out!");
-    res.redirect("/webconference")
-  };
 
-  module.exports.deleteAttendee =
-    async(req,res)=>{
+  module.exports.deleteAttendee = async(req,res)=>{
     const deleteAttendee = await Attendee.findByIdAndDelete(req.body.id);
     if(deleteAttendee){
         req.flash("success","Attendee deleted...")
@@ -40,14 +24,12 @@ module.exports.logout =
 
     //ATTENDEE ROUTES
 
-module.exports.renderSpeakers = 
-    async(req,res)=>{
+module.exports.renderSpeakers = async(req,res)=>{
     const speakers = await Speaker.find({});
     res.render("admins/speakers",{speakers})
     };
 
-module.exports.addSpeaker = 
-    async(req,res)=>{
+module.exports.addSpeaker = async(req,res)=>{
     const {path:url, filename} = req.file;
     const speaker = new Speaker(req.body);    
     speaker.photo = {url, filename};
@@ -56,8 +38,7 @@ module.exports.addSpeaker =
     res.redirect("/admins/speakers")
   };
 
-module.exports.deleteSpeaker =
-    async(req,res)=>{
+module.exports.deleteSpeaker = async(req,res)=>{
     const {speakerFileName} = req.body;
     await cloudinary.uploader.destroy(speakerFileName);
     const toDeleteSpeaker = await Speaker.find({"photo.filename":speakerFileName});
@@ -71,14 +52,13 @@ module.exports.deleteSpeaker =
       }
   };
 
-  module.exports.renderUpdateSpeaker = 
-    (async(req,res)=>{
+  module.exports.renderUpdateSpeaker = async(req,res)=>{
     const {id} = req.params;
     const speaker = await Speaker.findById(id);
     res.render("./admins/renderEditSpeaker",{speaker})
-  });
+  };
 
-  module.exports.updateSpeaker = (async(req,res)=>{
+  module.exports.updateSpeaker = async(req,res)=>{
     const {id} = req.params;
     const speaker = await Speaker.findByIdAndUpdate(id,{...req.body})
     if(!req.file){
@@ -97,18 +77,16 @@ module.exports.deleteSpeaker =
       req.flash("success","Updated Speaker...")
       res.redirect("/admins/speakers")
     }
-  });
+  };
 
     //SPONSORS ROUTES
 
-module.exports.renderSponsor =
-    async(req,res)=>{
+module.exports.renderSponsor = async(req,res)=>{
     const sponsors = await Sponsor.find({}); 
     res.render("./admins/sponsors",{sponsors})
     };
 
-module.exports.addSponsor = 
-    async(req,res)=>{
+module.exports.addSponsor =  async(req,res)=>{
     const {path:url, filename} = req.file;
     const newSponsor = await new Sponsor(req.body)
     newSponsor.image = {url, filename};
@@ -122,8 +100,7 @@ module.exports.addSponsor =
     }
       };
 
-module.exports.deleteSponsor=
-    async(req,res)=>{
+module.exports.deleteSponsor = async(req,res)=>{
     const {sponsorFileName} = req.body;
     await cloudinary.uploader.destroy(sponsorFileName);
     const toDeleteSponsor = await Sponsor.find({"image.filename":sponsorFileName});
