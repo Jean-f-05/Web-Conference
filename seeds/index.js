@@ -2,13 +2,13 @@ const mongoose = require("mongoose");
 const Speaker = require("../models/speakers");
 const superheroes = require('superheroes');
 const {jobs} = require("./seedsJobs")
-
+const dbUrl = process.env.DB_URL || 'mongodb://localhost:27017/webConference';
 // const {descriptors,places} = require("./seedHelpers")
 // if (process.env.NODE_ENV !== 'production') {
 //     require('dotenv').config();
 // }
 
-mongoose.connect('mongodb://localhost:27017/webConference', {
+mongoose.connect(dbUrl, {
     useNewUrlParser: true,
     useCreateIndex:true,
     useUnifiedTopology:true
