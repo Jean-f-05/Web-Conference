@@ -8,8 +8,10 @@
     background-size: cover;
 }
 
-
-
+.modal{
+        width: 60%; /* respsonsive width */
+        margin-left:0; /* width/2) */ 
+}
 .intro-text{
     padding-top: 150px;
     padding-bottom: 100px;
