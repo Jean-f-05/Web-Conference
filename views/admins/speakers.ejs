@@ -3,10 +3,10 @@
 <div id="main" class="container-fluid">
   <div class="row">
 
-    <div id="sidebar" class="text-white bg-dark col-2 pt-3">
+    <div id="sidebar" class="text-white bg-dark col-md-2 col-sm-12  pt-3">
       <ul class="nav nav-pills flex-column mb-auto">
         <li class="nav-item">
-          <a href="/admins" class="nav-link  text-white " aria-current="page">
+          <a href="/admins" class="nav-link text-white text fs-6" aria-current="page">
             <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"/></svg>
             Attendees
           </a>
@@ -26,7 +26,6 @@
     </div>
 
 
-
  
 
         <div id="SpeakersHeader" class="col-10 my-3">
@@ -38,34 +37,34 @@
           </div>
           <div class="container">
             <div class="row">
-              <div class="mb-3 col-6">
+              <div class="mb-3 col-6 col-xs-12">
                 <label for="exampleFormControlInput1" class="form-label">Name</label>
                 <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Speaker's name"  name="name" required>
               </div>
-              <div class="mb-3 col-6">
+              <div class="mb-3 col-6 col-xs-12">
                 <label for="exampleFormControlInput1" class="form-label">Job</label>
                 <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Speaker's Job" name="job" required>
               </div>
             </div>
             <div class="row">
-              <div class="mb-3 col-4">
+              <div class="mb-3 col-sm-4 col-xs-12">
                 <label for="exampleFormControlInput1" class="form-label">Twitter</label>
                 <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Twitter" name="socialNetworks[twitter]">
               </div>
-              <div class="mb-3 col-4">
+              <div class="mb-3 col-sm-4 col-xs-12">
                 <label for="exampleFormControlInput1" class="form-label">Facebook</label>
                 <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Facebook" name="socialNetworks[facebook]">
               </div>
-              <div class="mb-3 col-4">
+              <div class="mb-3 col-sm-4 col-xs-12">
                 <label for="exampleFormControlInput1" class="form-label">Linkedin</label>
                 <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Linkedin" name="socialNetworks[linkedin]">
               </div>
             </div>
-            <div class="mb-3 col-6">
+            <div class="mb-3 col-sm-6 col-xs-12">
               <label for="formFile" class="form-label">Photo</label>
               <input class="form-control" type="file" id="formFile" name="photo" required>
             </div>
-            <div class="mb-3 col-6">
+            <div class="mb-3 col-sm-6 col-xs-12">
               <label for="exampleFormControlTextarea1" class="form-label">Description</label>
               <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Speaker's Description" name="details" required></textarea>
             </div>
@@ -107,10 +106,10 @@
               <td>
                 <div class="container px-0">
                   <div class="row">  
-                    <div class="col-1 px-0">
-                      <a href="/admins/speakers/<%=speakers[i]._id%>" class="btn"><svg class="bi me-2" width="16" height="16"><use xlink:href="#edit"/></svg></a>
+                    <div class="col-6 px-0">
+                      <a href="/admins/speakers/<%=speakers[i]._id%>" class="btn px-0"><svg class="bi me-2" width="16" height="16"><use xlink:href="#edit"/></svg></a>
                     </div> 
-                    <div class="col-11">
+                    <div class="col-6 px-0">
                       <form action="/admins/speakers?_method=DELETE" method="POST">
                         <button type="submit"class= "btn" name="speakerFileName" value="<%=speakers[i].photo.filename%>"><svg class="bi me-2" width="16" height="16"><use xlink:href="#trash"/></svg></button>
                       </form>
