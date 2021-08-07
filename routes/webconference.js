@@ -14,10 +14,4 @@ router.route("/")
   
 router.post("/attendeeMsg",validateMessage,catchAsync(webconference.attendeemessage));
 
-router.get("/registerAdmin",async(req,res)=>{
-  const user = new User({email:"cali@gmail.com", username:"cali"})
-  const newUser = await User.register(user,"cali")
-  res.send(newUser)
-});
-
 module.exports = router;

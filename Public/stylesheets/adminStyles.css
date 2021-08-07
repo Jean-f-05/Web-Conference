@@ -33,3 +33,11 @@ min-height: 100vh;
 .btn-toggle-nav a:focus {
   background-color: #d2f4ea;
 }
+
+@media (max-width: 768px) {
+  #sidebar { min-height: 50px !important; }
+}
+
+/* @media (max-width: 576px) {
+  #content { ; }
+} */
