@@ -1,17 +1,17 @@
 {
-"name": "webconference",
-"version": "1.0.0",
-"main": "app.js",
-"devDependencies": {},
-"scripts": {
-  "test": "echo \"Error: no test specified\" && exit 1",
-  "start":"node app.js"
-},
-"keywords": [],
-"author": "",
-"license": "ISC",
-"description": "",
-"dependencies": {
+  "name": "webconference",
+  "version": "1.0.0",
+  "main": "app.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
     "cloudinary": "^1.26.2",
     "connect-flash": "^0.1.1",
     "connect-mongo": "^4.4.1",
@@ -34,4 +34,5 @@
     "passport-local-mongoose": "^6.1.0",
     "superheroes": "^3.0.0",
     "sweetalert2": "^11.0.18"
-  }}
+  }
+}
